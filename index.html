@@ -1,0 +1,244 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Human Robot Interface</title>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <script src="https://webgazer.cs.brown.edu/webgazer.js?"></script>
+    <script>
+    function loadXMLDoc(obj, act, tsk, val)
+    {
+        var req = new XMLHttpRequest()
+        req.onreadystatechange = function()
+        {
+            if (req.readyState == 1)
+            {
+                if (req.status != 200)
+                {
+                    //error handling code here
+                }
+                else
+                {
+                    var response = JSON.parse(req.responseText)
+                    document.getElementById('myDiv').innerHTML = response.username
+                }
+            }
+        }
+
+        req.open('POST', 'http://localhost:5000/ajax')
+        req.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+        var postVars = '{"object":"'+obj+'", "action":"'+act+'", "task":"'+tsk+'", "value":"'+val+'"}'
+        console.log($('#'+obj+act+val).offset().left)
+        req.send(postVars)
+
+        return false
+    }
+
+    </script>
+</head>
+<center>
+    <h1>Human Robot Interface</h1>
+    <form action="" method="POST">
+        <!--<input type="text" name="scname" id="scname">
+        <input type="hidden" name="secret" id="secret" value="shhh"> -->
+        <h2>Demonstration</h2>
+        <div>
+            <table>
+                <tr>
+                    <td></td>
+                    <td>
+                        <h3>Glass</h3>
+                    </td>
+                    <td></td>
+                    <td>
+                        <h3>Cup</h3>
+                    </td>
+                    <td></td>
+                    <td>
+                        <h3>Door</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td><h3>Start</h3></td>
+                    <td>
+                        <input style="height:150px;width:150px" id="glassdrinkstart" size="56px" type="button" value="Drink"
+                               onclick="return loadXMLDoc('glass', 'drink', 'demonstration', 'start')">
+                        <input style="height:150px;width:150px" id="glasspourstart" type="button" value="Pour"
+                               onclick="return loadXMLDoc('glass', 'pour', 'demonstration', 'start')">
+                        <input style="height:100px;width:100px" id="glassmovestart" type="button" value="Move"
+                               onclick="return loadXMLDoc('glass', 'move', 'demonstration', 'start')">
+                    </td>
+                    <td></td>
+                    <td>
+                        <input style="height:150px;width:150px" id="cupdrinkstart" type="button" value="Drink"
+                               onclick="return loadXMLDoc('cup', 'drink', 'demonstration', 'start')">
+                        <input style="height:100px;width:100px" id="cuppourstart" type="button" value="Pour"
+                               onclick="return loadXMLDoc('cup', 'pour', 'demonstration', 'start')">
+                        <input style="height:100px;width:100px" id="cupmovestart" type="button" value="Move"
+                               onclick="return loadXMLDoc('cup', 'move', 'demonstration', 'start')">
+                    </td>
+                    <td></td>
+                    <td>
+                        <input style="height:100px;width:100px" id="dooropenstart" type="button" value="Open"
+                               onclick="return loadXMLDoc('door', 'open', 'demonstration', 'start')">
+                        <input style="height:100px;width:100px" id="doorclosestart" type="button" value="Close"
+                               onclick="return loadXMLDoc('door', 'close', 'demonstration', 'start')">
+                    </td>
+                </tr>
+                <tr>
+                    <td><h3>Stop</h3></td>
+                    <td>
+                        <input style="height:150px;width:150px" id="glassdrinkstop" type="button" value="Drink"
+                               onclick="return loadXMLDoc('glass', 'drink', 'demonstration', 'stop')">
+                        <input style="height:150px;width:150px" id="glasspourstop" type="button" value="Pour"
+                               onclick="return loadXMLDoc('glass', 'pour', 'demonstration', 'stop')">
+                        <input style="height:100px;width:100px" id="glassmovestop" type="button" value="Move"
+                               onclick="return loadXMLDoc('glass', 'move', 'demonstration', 'stop')">
+                    </td>
+                    <td></td>
+                    <td>
+                        <input style="height:100px;width:100px" id="cupdrinkstop" type="button" value="Drink"
+                               onclick="return loadXMLDoc('cup', 'drink', 'demonstration', 'stop')">
+                        <input style="height:100px;width:100px" id="cuppourstop" type="button" value="Pour"
+                               onclick="return loadXMLDoc('cup', 'pour', 'demonstration', 'stop')">
+                        <input style="height:100px;width:100px" id="cupmovestop" type="button" value="Move"
+                               onclick="return loadXMLDoc('cup', 'move', 'demonstration', 'stop')">
+                    </td>
+                    <td></td>
+                    <td>
+                        <input style="height:100px;width:100px" id="dooropenstop" type="button" value="Open"
+                               onclick="return loadXMLDoc('door', 'open', 'demonstration', 'stop')">
+                        <input style="height:100px;width:100px" id="doorclosestop" type="button" value="Close"
+                               onclick="return loadXMLDoc('door', 'close', 'demonstration', 'stop')">
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <h2>Execution</h2>
+        <div>
+            <table>
+                <tr>
+                    <td></td>
+                    <td>
+                        <h3>Glass</h3>
+                    </td>
+                    <td>
+                        <h3>Cup</h3>
+                    </td>
+                    <td>
+                        <h3>Door</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td><h3>Start</h3></td>
+                    <td>
+                        <input style="height:150px;width:150px" id= "eglassdrinkstart" type="button" value="Drink"
+                               onclick="return loadXMLDoc('glass', 'drink', 'execution', 'start')">
+                        <input style="height:150px;width:150px" type="button" value="Pour"
+                               onclick="return loadXMLDoc('glass', 'pour', 'execution', 'start')">
+                        <input style="height:100px;width:100px" type="button" value="Move"
+                               onclick="return loadXMLDoc('glass', 'move', 'execution', 'start')">
+                    </td>
+                    <td>
+                        <input style="height:100px;width:100px" type="button" value="Drink"
+                               onclick="return loadXMLDoc('cup', 'drink', 'execution', 'start')">
+                        <input style="height:100px;width:100px" type="button" value="Pour"
+                               onclick="return loadXMLDoc('cup', 'pour', 'execution', 'start')">
+                        <input style="height:100px;width:100px" type="button" value="Move"
+                               onclick="return loadXMLDoc('cup', 'move', 'execution', 'start')">
+                    </td>
+                    <td>
+                        <input style="height:100px;width:100px" type="button" value="Open"
+                               onclick="return loadXMLDoc('door', 'open', 'execution', 'start')">
+                        <input style="height:100px;width:100px" type="button" value="Close"
+                               onclick="return loadXMLDoc('door', 'close', 'execution', 'start')">
+                    </td>
+                </tr>
+                <tr>
+                    <td><h3>Stop</h3></td>
+                    <td>
+                        <input style="height:150px;width:150px" type="button" value="Drink"
+                               onclick="return loadXMLDoc('glass', 'drink', 'execution', 'stop')">
+                        <input style="height:100px;width:100px" type="button" value="Pour"
+                               onclick="return loadXMLDoc('glass', 'pour', 'execution', 'stop')">
+                        <input style="height:100px;width:100px" type="button" value="Move"
+                               onclick="return loadXMLDoc('glass', 'move', 'execution', 'stop')">
+                    </td>
+                    <td>
+                        <input style="height:100px;width:100px" type="button" value="Drink"
+                               onclick="return loadXMLDoc('cup', 'drink', 'execution', 'stop')">
+                        <input style="height:100px;width:100px" type="button" value="Pour"
+                               onclick="return loadXMLDoc('cup', 'pour', 'execution', 'stop')">
+                        <input style="height:100px;width:100px" type="button" value="Move"
+                               onclick="return loadXMLDoc('cup', 'move', 'execution', 'stop')">
+                    </td>
+                    <td>
+                        <input style="height:100px;width:100px" type="button" value="Open"
+                               onclick="return loadXMLDoc('door', 'open', 'execution', 'stop')">
+                        <input style="height:100px;width:100px" type="button" value="Close"
+                               onclick="return loadXMLDoc('door', 'close', 'execution', 'stop')">
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+    <div id="myDiv"></div>
+</center>
+</body>
+    <script>
+
+    const LOOK_DELAY = 10
+    var $glassdrinkstart = $(document.getElementById("glassdrinkstart"))
+    const GDDSL = $glassdrinkstart.offset().left
+    const GDDST = $glassdrinkstart.offset().top
+    var $glasspourstart = $(document.getElementById("glasspourstart"))
+    const GPDSL = $glasspourstart.offset().left
+    var $glassdrinkstop = $(document.getElementById("glassdrinkstop"))
+    const GDDSTT = $glassdrinkstop.offset().top
+    const GDDSTL = $glassdrinkstop.offset().left
+    var $glasspourstop = $(document.getElementById("glasspourstop"))
+    const GDPSTT = $glasspourstop.offset().top
+    const GDPSTL = $glasspourstop.offset().left
+    var $eglassdrinkstart = $(document.getElementById("eglassdrinkstart"))
+    const EGDDSL = $eglassdrinkstart.offset().left
+    const EGDDST = $eglassdrinkstart.offset().top
+
+    let startLookupTime = Number.POSITIVE_INFINITY
+    let lookButton = null
+
+    webgazer.setGazeListener((data, timestamp) => {
+<!--    console.log(data, timestamp)-->
+
+    if (data == null) return
+
+    if (data.x >= GDDSL && data.x <= GPDSL && data.y <= GDDST && data.y <= GDDSTT && lookButton !== 'GLASS_D_STRT') {
+        console.log(data, timestamp)
+        startLookupTime = timestamp
+        lookButton = 'GLASS_D_STRT'
+    } else if (data.x >= GDDSTL && data.x <= GDPSTL && data.y <= GDDSTT && data.y <= EGDDST && lookButton !== 'GLASS_D_STOP') {
+        console.log(data, timestamp)
+        startLookupTime = timestamp
+        lookButton = 'GLASS_D_STOP'
+    } else {
+        startLookupTime = Number.POSITIVE_INFINITY
+        lookButton = null
+    }
+<!--    console.log(startLookupTime + LOOK_DELAY)-->
+<!--    console.log(timestamp)-->
+    if (startLookupTime == timestamp) {
+        console.log("here")
+        console.log(lookButton)
+        switch(lookButton) {
+        case 'GLASS_D_STRT':
+            loadXMLDoc('glass', 'drink', 'demonstration', 'start')
+            break;
+        case 'GLASS_D_STOP':
+            loadXMLDoc('glass', 'drink', 'demonstration', 'stop')
+            break;
+        default:
+            console.log("NO ACTION")
+        }
+    }
+
+    }).begin()
+    </script>
+</html>
