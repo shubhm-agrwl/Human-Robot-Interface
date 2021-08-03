@@ -1,0 +1,81 @@
+:root {
+  --side-width: 21vw;
+}
+body {
+  margin: 1em;
+  font-family: 'futura';
+}
+h2 {
+  font-size: 2.5em;
+}
+p {
+  font-size: 2em;
+  color: rgb(112, 164, 199);
+}
+button {
+  font-family: 'futura';
+  height: 12vw;
+  border-radius: .5em;
+  font-size: 2.5em;
+  transition: background-color .25s;
+  border: .075em solid rgb(173, 173, 173);
+}
+button:hover {
+  background-color: rgb(156, 205, 238);
+  border: .075em solid rgb(112, 164, 199);
+}
+
+/* left screen */
+.left {
+  float: left;
+  width: var(--side-width);
+  margin-right: 1vw;
+}
+.left button {
+  width: var(--side-width);
+  height: 17vw;
+  background-color: rgb(255, 99, 99);
+  border: .1em solid rgb(185, 50, 50);
+  color: white;
+}
+.left button:hover {
+  background-color: rgb(230, 60, 48);
+  border: .1em solid rgb(136, 37, 37);
+}
+
+/* center screen */
+.center {
+  float: left;
+  width: 53vw;
+}
+.center img {
+  width: 100%;
+  height: auto;
+  border-radius: 1.1em;
+}
+table {
+  width: 100%;
+}
+td {
+  width: 50%;
+}
+td button {
+  width: 100%;
+}
+
+/* right screen */
+.right {
+  float: left;
+  width: var(--side-width);
+  margin-left: 1vw;
+  text-align: center;
+}
+#next-btn {
+  position: fixed;
+  width: 15vw;
+  bottom: 13vh;
+  right: 4.5vw;
+}
+#next-btn img {
+  width: 40%;
+}
