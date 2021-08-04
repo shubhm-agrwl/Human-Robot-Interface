@@ -14,7 +14,8 @@
     </div>
     <div class="center">
         <img src="images/picture1.jpeg" alt="sample video feed (static)">
-        <div class="option-selection">
+        <!-- main 4 options screen -->
+        <div id="main-options" class="option-selection">
             <table>
                 <tr>
                     <td><button>Pick up</button></td>
@@ -26,11 +27,26 @@
                 </tr>
             </table>
         </div>
+        <!-- pg2 options screen -->
+        <div id="pg2-options" class="option-selection">
+            <table>
+                <tr>
+                    <td><button>Option 1</button></td>
+                    <td><button>Option 2</button></td>
+                </tr>
+                <tr>
+                    <td><button>Option 3</button></td>
+                    <td><button>Option 4</button></td>
+                </tr>
+            </table>
+        </div>
     </div>
     <div class="right">
         <h2>Objects detected:</h2>
         <p class="objects-list">Orange<br>Computer<br>Cup</p>
         <button id="next-btn"><img src="images/right-arrow.png" alt="next page"></button>
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>

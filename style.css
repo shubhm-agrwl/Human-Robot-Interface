@@ -79,3 +79,8 @@ td button {
 #next-btn img {
   width: 40%;
 }
+
+/* pg2 options page */
+#pg2-options {
+  display: none;
+}
