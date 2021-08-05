@@ -1,26 +1,31 @@
 :root {
-  --side-width: 21vw;
+  --left-width: 42vw;
+  --right-width: 54.5vw;
 }
+
 body {
   margin: 1em;
   font-family: 'futura';
 }
 h2 {
-  font-size: 2.5em;
+  font-size: 3.5em;
 }
 p {
-  font-size: 2em;
+  font-size: 3em;
   color: rgb(112, 164, 199);
 }
 button {
   font-family: 'futura';
-  height: 12vw;
   border-radius: .5em;
   font-size: 2.5em;
-  transition: background-color .25s;
+  transition: background-color .1s;
   border: .075em solid rgb(173, 173, 173);
 }
 button:hover {
+  background-color: rgb(200, 200, 200);
+  border: .075em solid rgb(150, 150, 150);
+}
+button:active {
   background-color: rgb(156, 205, 238);
   border: .075em solid rgb(112, 164, 199);
 }
@@ -28,56 +33,73 @@ button:hover {
 /* left screen */
 .left {
   float: left;
-  width: var(--side-width);
-  margin-right: 1vw;
+  width: var(--left-width);
+  margin-right: .5vw;
 }
-#cancel {
-  width: var(--side-width);
-  height: 17vw;
-  background-color: rgb(255, 99, 99);
-  border: .1em solid rgb(185, 50, 50);
-  color: white;
-}
-#cancel:hover {
-  background-color: rgb(230, 60, 48);
-  border: .1em solid rgb(136, 37, 37);
-}
-
-/* center screen */
-.center {
-  float: left;
-  width: 53vw;
-}
-.center img {
+.left img {
   width: 100%;
   height: auto;
   border-radius: 1.1em;
-}
-table {
-  width: 100%;
-}
-td {
-  width: 50%;
-}
-td button {
-  width: 100%;
 }
 
 /* right screen */
 .right {
   float: left;
-  width: var(--side-width);
-  margin-left: 1vw;
-  text-align: center;
+  width: var(--right-width);
 }
+.right table {
+  height: 27.8vw;
+  width: 100%;
+}
+.right td {
+  width: 50%;
+}
+.right button {
+  height: 100%;
+  width: 100%;
+}
+
+#cancel {
+  width: 17vw;
+  height: 17vw;
+  margin-top: 2vw;
+  margin-left: 5vw;
+  margin-right: 5vw;
+  background-color: rgb(255, 99, 99);
+  border: .1em solid rgb(185, 50, 50);
+  border-radius: 50%;
+  transition: background-color .1s;
+  color: white;
+}
+#cancel:hover {
+  background-color: rgb(255, 65, 65);
+  border: .1em solid rgb(185, 50, 50);
+}
+#cancel:active {
+  background-color: rgb(230, 35, 25);
+  border: .1em solid rgb(136, 37, 37);
+}
+
 #next-btn {
-  position: fixed;
-  width: 15vw;
-  bottom: 13vh;
-  right: 4.5vw;
+  width: 17vw;
+  height: 17vw;
+  margin-left: 5vw;
+  background-color: rgb(133, 230, 140);
+  border: .1em solid rgb(50, 195, 50);
+  border-radius: 50%;
+  transition: background-color .1s;
+  color: white;
+}
+#next-btn:hover {
+  background-color: rgb(85, 230, 85);
+  border: .1em solid rgb(50, 190, 50);
+}
+#next-btn:active {
+  background-color: rgb(30, 240, 25);
+  border: .1em solid rgb(30, 210, 30);
 }
 #next-btn img {
-  width: 40%;
+  width: 30%;
 }
 
 /* pg2 options page */

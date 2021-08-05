@@ -10,10 +10,11 @@
 </head>
 <body>
     <div class="left">
-        <button id="cancel">Cancel</button>
-    </div>
-    <div class="center">
         <img src="images/picture1.jpeg" alt="sample video feed (static)">
+        <h2>Objects detected:</h2>
+        <p class="objects-list">Orange<br>Computer<br>Cup</p>
+    </div>
+    <div class="right">
         <!-- main 4 options screen -->
         <div id="main-options" class="option-selection">
             <table>
@@ -40,13 +41,9 @@
                 </tr>
             </table>
         </div>
+        <button id="cancel">Cancel</button>
+        <button id="next-btn">Next</button>
     </div>
-    <div class="right">
-        <h2>Objects detected:</h2>
-        <p class="objects-list">Orange<br>Computer<br>Cup</p>
-        <button id="next-btn"><img src="images/right-arrow.png" alt="next page"></button>
-    </div>
-
     <script src="script.js"></script>
 </body>
 </html>
