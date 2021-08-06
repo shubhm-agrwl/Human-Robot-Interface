@@ -1,6 +1,6 @@
 :root {
-  --left-width: 42vw;
-  --right-width: 54.5vw;
+  --left-width: 54.5vw;
+  --right-width: 42vw;
 }
 
 body {
@@ -31,30 +31,30 @@ button:active {
 }
 
 /* left screen */
-.left {
+.right {
   float: left;
-  width: var(--left-width);
-  margin-right: .5vw;
+  width: var(--right-width);
+  margin-left: .5vw;
 }
-.left img {
+.right img {
   width: 100%;
   height: auto;
   border-radius: 1.1em;
 }
 
 /* right screen */
-.right {
+.left {
   float: left;
-  width: var(--right-width);
+  width: var(--left-width);
 }
-.right table {
+.left table {
   height: 27.8vw;
   width: 100%;
 }
-.right td {
+.left td {
   width: 50%;
 }
-.right button {
+.left button {
   height: 100%;
   width: 100%;
 }
@@ -67,7 +67,6 @@ button:active {
   margin-right: 5vw;
   background-color: rgb(255, 99, 99);
   border: .1em solid rgb(185, 50, 50);
-  border-radius: 50%;
   transition: background-color .1s;
   color: white;
 }
@@ -86,7 +85,6 @@ button:active {
   margin-left: 5vw;
   background-color: rgb(133, 230, 140);
   border: .1em solid rgb(50, 195, 50);
-  border-radius: 50%;
   transition: background-color .1s;
   color: white;
 }
