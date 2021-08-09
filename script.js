@@ -1,20 +1,25 @@
-const pg1 = document.getElementById("main-options");
-const pg2 = document.getElementById("pg2-options");
+const actions = ["1", "2", "3", "4", "5", "6", "7", "8"];
+var setNum = 0;
 
-// next page button
-const next = document.getElementById("next-btn");
-next.addEventListener("click", nextPage);
+const buttons = [document.getElementById("btn1"), document.getElementById("btn2"), document.getElementById("btn3"), document.getElementById("btn4")];
 
-function nextPage() {
-	pg1.style.display = "none";
-	pg2.style.display = "block";
+const nextButton = document.getElementById("next-btn");
+nextButton.addEventListener("click", changeAction);
+
+for (var i=0; i<buttons.length; i++) {
+  buttons[i].innerHTML = actions[i];
+  buttons[i].value = actions[i];
 }
 
-// cancel button
-const cancel = document.getElementById("cancel");
-cancel.addEventListener("click", stopAction);
+function changeAction() {
+  setNum++;
 
-function stopAction() {
-	pg1.style.display = "block";
-	pg2.style.display = "none";
+  if (setNum > actions.length/buttons.length -1) {
+    setNum = 0;
+  }
+
+  for (var e=0; e<buttons.length; e++) {
+    buttons[e].innerHTML = actions[setNum*buttons.length+e];
+    buttons[e].value = actions[setNum*buttons.length+e];
+  }
 }
