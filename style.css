@@ -8,10 +8,10 @@ body {
   font-family: 'futura';
 }
 h2 {
-  font-size: 3.5em;
+  font-size: 2.5em;
 }
 p {
-  font-size: 3em;
+  font-size: 2.3em;
   color: rgb(112, 164, 199);
 }
 button {
@@ -77,6 +77,9 @@ button:active {
   border: .1em solid rgb(185, 50, 50);
 }
 #cancel-btn:active {
+  background-color: rgb(255, 80, 80);
+  border: .1em solid rgb(206, 53, 53);
+}
 
 #next-btn {
   width: 17vw;
