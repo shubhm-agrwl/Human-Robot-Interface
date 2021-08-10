@@ -59,7 +59,8 @@ button:active {
   width: 100%;
 }
 
-#cancel {
+
+#cancel-btn {
   width: 17vw;
   height: 17vw;
   margin-top: 2vw;
@@ -70,14 +71,12 @@ button:active {
   transition: background-color .1s;
   color: white;
 }
-#cancel:hover {
+
+#cancel-btn:hover {
   background-color: rgb(255, 65, 65);
   border: .1em solid rgb(185, 50, 50);
 }
-#cancel:active {
-  background-color: rgb(230, 35, 25);
-  border: .1em solid rgb(136, 37, 37);
-}
+#cancel-btn:active {
 
 #next-btn {
   width: 17vw;
