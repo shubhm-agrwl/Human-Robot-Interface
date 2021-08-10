@@ -115,3 +115,12 @@ button:active {
   margin-top: 30px;
   margin-bottom: 0;
 }
+
+@media only screen and (max-width: 1360px) {
+  h2 {
+    font-size: 2em;
+  }
+  p {
+    font-size: 2em;
+  }
+}
