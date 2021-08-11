@@ -97,3 +97,29 @@ for (var i=0; i<buttons.length; i++) {
 }
 
 setActions();
+
+let currentAction; // saved 'task' value
+
+// send data on click
+function sendData(btnIndex) {
+  // isAction clarifies whether the button is a 'task' or an 'object'
+  let isAction = false;
+
+  const button = buttons[btnIndex];
+  const value = button.value;
+
+  // check if value is a 'task' or an 'object'
+  for(let i=0; i<actions.length; i++) {
+    // save current action if value is a 'task'
+    if(value === actions[i]) {
+      isAction = true;
+      currentAction = value;
+      break;
+    }
+  }
+
+  // send obj & act if button is an 'object'
+  if(!isAction) {
+    return loadXMLDoc(value, currentAction);
+  }
+}
