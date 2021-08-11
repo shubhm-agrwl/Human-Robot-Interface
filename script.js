@@ -1,7 +1,10 @@
+// The list of actions displayed on the buttons in the main menu
 const actions = ["Pick up", "Open/Close", "Switch on/off", "Feed", "Plug in/out", "6", "7", "8"];
 
+// The values of the buttons. This list changes depending on which menu the user is on
 var buttonValues = [];
 
+// The list of lists actions displayed on the buttons in the sub menu. Each list corresponds to a button on the main menu
 const moreActions = [
   ["1-1", "1-2", "1-3", "1-4", "1-5", "1-6", "1-7", "1-8"], 
   ["2-1", "2-2", "2-3", "2-4", "2-5", "2-6", "2-7", "2-8"], 
@@ -13,14 +16,19 @@ const moreActions = [
   ["8-1", "8-2", "8-3", "8-4", "8-5", "8-6", "8-7", "8-8"]
 ];
 
+// Defines all the buttons
 const buttons = [document.getElementById("btn1"), document.getElementById("btn2"), document.getElementById("btn3"), document.getElementById("btn4")];
 const cancelButton = document.getElementById("cancel-btn");
 const nextButton = document.getElementById("next-btn");
 
+// The number of the set of 4 option the user is currently on
 var setNum = 0;
+// The specific sub menu the user is currently on
 var subNum = 0;
+// The maximum number if sets based on how many button values are available
 const maxSetNum = actions.length/buttons.length -1;
 
+// A list consisting of one function per button. This takes the button input and converts it into its value rather than just its button number (1, 2, 3, or 4)
 const convertToValues = [
   function() {
     if (buttonValues == moreActions[subNum]) {
@@ -60,6 +68,7 @@ const convertToValues = [
   },
 ];
 
+// A function that updates the button HTML values to match its buttonValue
 function setButtonValues() {
   for (var i=0; i<buttons.length; i++) {
     buttons[i].innerHTML = buttonValues[i+setNum*buttons.length];
@@ -67,18 +76,21 @@ function setButtonValues() {
   }
 }
 
+// A function that sends the user back to the main menu
 function setActions() {
   buttonValues = actions;
   setNum = 0;
   setButtonValues();
 }
 
+// A function that sends the user to the corresponding sub menu
 function setMoreOptions() {
   buttonValues = moreActions[subNum];
   setNum = 0;
   setButtonValues();
 }
 
+// A function that changes the buttons to display the next set of values
 function nextSet() {
   setNum++;
 
@@ -89,9 +101,9 @@ function nextSet() {
   setButtonValues();
 }
 
+// Adds listeners to send input when the buttons are clicked
 cancelButton.addEventListener("click", setActions);
 nextButton.addEventListener("click", nextSet);
-
 for (var i=0; i<buttons.length; i++) {
   buttons[i].addEventListener("click", convertToValues[i]);
 }
