@@ -1,8 +1,17 @@
-const actions = ["1", "2", "3", "4", "5", "6", "7", "8"];
+const actions = ["Pick up", "Open/Close", "Switch on/off", "Feed", "Plug in/out", "6", "7", "8"];
 
 var buttonValues = [];
 
-const moreActions = [["1-1", "1-2", "1-3", "1-4", "1-5", "1-6", "1-7", "1-8"], ["2-1", "2-2", "2-3", "2-4", "2-5", "2-6", "2-7", "2-8"], ["3-1", "3-2", "3-3", "3-4", "3-5", "3-6", "3-7", "3-8"], ["4-1", "4-2", "4-3", "4-4", "4-5", "4-6", "4-7", "4-8"], ["5-1", "5-2", "5-3", "5-4", "5-5", "5-6", "5-7", "5-8"], ["6-1", "6-2", "6-3", "6-4", "6-5", "6-6", "6-7", "6-8"], ["7-1", "7-2", "7-3", "7-4", "7-5", "7-6", "7-7", "7-8"], ["8-1", "8-2", "8-3", "8-4", "8-5", "8-6", "8-7", "8-8"]];
+const moreActions = [
+  ["1-1", "1-2", "1-3", "1-4", "1-5", "1-6", "1-7", "1-8"], 
+  ["2-1", "2-2", "2-3", "2-4", "2-5", "2-6", "2-7", "2-8"], 
+  ["3-1", "3-2", "3-3", "3-4", "3-5", "3-6", "3-7", "3-8"], 
+  ["4-1", "4-2", "4-3", "4-4", "4-5", "4-6", "4-7", "4-8"], 
+  ["5-1", "5-2", "5-3", "5-4", "5-5", "5-6", "5-7", "5-8"], 
+  ["6-1", "6-2", "6-3", "6-4", "6-5", "6-6", "6-7", "6-8"], 
+  ["7-1", "7-2", "7-3", "7-4", "7-5", "7-6", "7-7", "7-8"], 
+  ["8-1", "8-2", "8-3", "8-4", "8-5", "8-6", "8-7", "8-8"]
+];
 
 const buttons = [document.getElementById("btn1"), document.getElementById("btn2"), document.getElementById("btn3"), document.getElementById("btn4")];
 const cancelButton = document.getElementById("cancel-btn");
@@ -88,3 +97,29 @@ for (var i=0; i<buttons.length; i++) {
 }
 
 setActions();
+
+let currentAction; // saved 'task' value
+
+// send data on click
+function sendData(btnIndex) {
+  // isAction clarifies whether the button is a 'task' or an 'object'
+  let isAction = false;
+
+  const button = buttons[btnIndex];
+  const value = button.value;
+
+  // check if value is a 'task' or an 'object'
+  for(let i=0; i<actions.length; i++) {
+    // save current action if value is a 'task'
+    if(value === actions[i]) {
+      isAction = true;
+      currentAction = value;
+      break;
+    }
+  }
+
+  // send obj & act if button is an 'object'
+  if(!isAction) {
+    return loadXMLDoc(value, currentAction);
+  }
+}

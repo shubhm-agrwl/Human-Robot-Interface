@@ -6,12 +6,14 @@
 body {
   margin: 1em;
   font-family: 'futura';
+  box-sizing: border-box;
 }
 h2 {
-  font-size: 3.5em;
+  font-size: 2.5em;
+  margin-bottom: 10px;
 }
 p {
-  font-size: 3em;
+  font-size: 2.3em;
   color: rgb(112, 164, 199);
 }
 button {
@@ -59,6 +61,7 @@ button:active {
   width: 100%;
 }
 
+
 #cancel-btn {
   width: 17vw;
   height: 17vw;
@@ -70,13 +73,14 @@ button:active {
   transition: background-color .1s;
   color: white;
 }
+
 #cancel-btn:hover {
   background-color: rgb(255, 65, 65);
   border: .1em solid rgb(185, 50, 50);
 }
 #cancel-btn:active {
-  background-color: rgb(230, 35, 25);
-  border: .1em solid rgb(136, 37, 37);
+  background-color: rgb(255, 80, 80);
+  border: .1em solid rgb(206, 53, 53);
 }
 
 #next-btn {
@@ -98,4 +102,25 @@ button:active {
 }
 #next-btn img {
   width: 30%;
+}
+
+.objects-list {
+  height: 20vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.objects-list > p {
+  line-height: 20px;
+  margin-top: 30px;
+  margin-bottom: 0;
+}
+
+@media only screen and (max-width: 1360px) {
+  h2 {
+    font-size: 2em;
+  }
+  p {
+    font-size: 2em;
+  }
 }

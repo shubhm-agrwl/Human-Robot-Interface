@@ -7,17 +7,42 @@
     <title>Interface Prototype 1</title>
     
     <link rel="stylesheet" href="style.css">
+
+    <script>
+    function loadXMLDoc(obj, act) {
+        var req = new XMLHttpRequest()
+        req.onreadystatechange = function() {
+            if (req.readyState == 1) {
+                if (req.status != 200) {
+                    //error handling code here
+                }
+                else {
+                    var response = JSON.parse(req.responseText)
+                    document.getElementById('myDiv').innerHTML = response.username
+                }
+            }
+        }
+
+        req.open('POST', 'http://localhost:5000/ajax')
+        req.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+        var postVars = '{"object":"'+obj+'", "action":"'+act+'"}'
+        //console.log($('#'+obj+act+val).offset().left)
+        req.send(postVars)
+
+        return false
+    }
+    </script>
 </head>
 <body>
     <div class="left">
             <table>
                 <tr>
-                    <td><button id="btn1"></button></td>
-                    <td><button id="btn2"></button></td>
+                    <td><button id="btn1" onclick="sendData(0)"></button></td>
+                    <td><button id="btn2" onclick="sendData(1)"></button></td>
                 </tr>
                 <tr>
-                    <td><button id="btn3"></button></td>
-                    <td><button id="btn4"></button></td>
+                    <td><button id="btn3" onclick="sendData(2)"></button></td>
+                    <td><button id="btn4" onclick="sendData(3)"></button></td>
                 </tr>
             </table>
         <button id="cancel-btn">Cancel</button>
@@ -26,7 +51,12 @@
     <div class="right">
         <img src="images/picture1.jpeg" alt="sample video feed (static)">
         <h2>Objects detected:</h2>
-        <p class="objects-list">Orange<br>Computer<br>Cup</p>
+        <div class="objects-list">
+            <p>Orange</p>
+            <p>Computer</p>
+            <p>Cup</p>
+            <p>Paper</p>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
