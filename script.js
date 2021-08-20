@@ -135,3 +135,31 @@ function sendData(btnIndex) {
     return loadXMLDoc(value, currentAction);
   }
 }
+
+// compilation of possible objects
+const possibleObjects = ["Fruit", "Computer", "Cup", "Paper", "Pen", "Bottle", "Door", "Lamp", "Box", "Phone", "Charger", "Light switch", "Jar", "Bowl", "Plate"];
+
+// list of paragraph elements in objects-detected list (6)
+const objectsDetected = document.getElementsByClassName("object");
+
+// record all objects as they are added to objects-detected list to ensure no repeats
+let currentObjectsList = [];
+
+// declare randomIndex variable to be accessed in filling objects-detected list with random objects
+let randomIndex;
+
+// fill objects-detected list with random objects
+for(let i=0; i<objectsDetected.length; i++) {
+
+  // check if random object is already listed in objects-detected list
+  do {
+    randomIndex = Math.floor(Math.random() * possibleObjects.length);
+    console.log("do while");
+  } while(currentObjectsList.includes(randomIndex));
+
+  // add object to current showing of objects-detected list
+  currentObjectsList.push(randomIndex);
+  
+  // change objects-detected list to display object
+  objectsDetected[i].innerHTML = possibleObjects[randomIndex];
+}
