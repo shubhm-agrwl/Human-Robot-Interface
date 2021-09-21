@@ -2,7 +2,6 @@
 Contains the Interface to send instructions to the Robot
 
 ## Usage:
-CSS file: used to style interface.
-HTML file: open index.html in browser.
+python flask-html.py
 
-picture1.jpeg: used in place of video feed.
+Runs a Web Server locally on Port 5000

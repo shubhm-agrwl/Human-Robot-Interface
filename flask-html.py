@@ -1,12 +1,17 @@
-from flask import (Flask, request, jsonify)
+from flask import (Flask, request, jsonify, render_template, url_for)
 
 app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return render_template('index.html')
+    #return url_for('/Users/admin/github_shubham/Human-Robot-Interface', filename = 'index.html')
 
 @app.route('/ajax', methods=['POST'])
 def ajax_request():
     data = request.get_json(force=True)
     print(data)
-    return jsonify(username=data['object'] + '-' + data['action'] + '-' + data['task'] + '-' + data['value'])
+    return jsonify(username=data['object'] + '-' + data['action'])
     # username = request.form['username']
     # return jsonify(username=username)
 
