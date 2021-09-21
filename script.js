@@ -154,7 +154,6 @@ for(let i=0; i<objectsDetected.length; i++) {
   // check if random object is already listed in objects-detected list
   do {
     randomIndex = Math.floor(Math.random() * possibleObjects.length);
-    console.log("do while");
   } while(currentObjectsList.includes(randomIndex));
 
   // add object to current showing of objects-detected list
