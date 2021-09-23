@@ -110,7 +110,9 @@ for (var i=0; i<buttons.length; i++) {
 
 setActions();
 
+let win = document.getElementById("window"); // pop-up window
 let currentAction; // saved 'task' value
+let currentObject; // saved 'object' value
 
 // send data on click
 function sendData(btnIndex) {
@@ -132,7 +134,10 @@ function sendData(btnIndex) {
 
   // send obj & act if button is an 'object'
   if(!isAction) {
-    return loadXMLDoc(value, currentAction);
+    win.style.display = "flex";
+    currentObject = value;
+    // send empty string for query response
+    return loadXMLDoc(currentObject, currentAction, "");
   }
 }
 
@@ -161,4 +166,17 @@ for(let i=0; i<objectsDetected.length; i++) {
   
   // change objects-detected list to display object
   objectsDetected[i].innerHTML = possibleObjects[randomIndex];
+}
+
+// close query window
+function closeQuery(responseID) {
+  win.style.display = "none";
+  let response;
+  if(responseID == 1) {
+    response = document.getElementById("response1").innerHTML;
+  }
+  else {
+    response = document.getElementById("response2").innerHTML;
+  }
+  return loadXMLDoc(currentObject, currentAction, response);
 }

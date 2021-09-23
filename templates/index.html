@@ -9,7 +9,7 @@
     <link rel="stylesheet" href= "{{ url_for('static',filename='styles/mainpage.css') }}">
 
     <script>
-    function loadXMLDoc(obj, act) {
+    function loadXMLDoc(obj, act, response) {
         var req = new XMLHttpRequest()
         req.onreadystatechange = function() {
             if (req.readyState == 1) {
@@ -25,7 +25,7 @@
 
         req.open('POST', 'http://localhost:5000/ajax')
         req.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
-        var postVars = '{"object":"'+obj+'", "action":"'+act+'"}'
+        var postVars = '{"object":"'+obj+'", "action":"'+act+'", "response":"'+response+'"}'
         //console.log($('#'+obj+act+val).offset().left)
         req.send(postVars)
 
@@ -35,16 +35,16 @@
 </head>
 <body>
     <div class="left">
-            <table>
-                <tr>
-                    <td><button id="btn1" onclick="sendData(0)"></button></td>
-                    <td><button id="btn2" onclick="sendData(1)"></button></td>
-                </tr>
-                <tr>
-                    <td><button id="btn3" onclick="sendData(2)"></button></td>
-                    <td><button id="btn4" onclick="sendData(3)"></button></td>
-                </tr>
-            </table>
+        <table>
+            <tr>
+                <td><button id="btn1" onclick="sendData(0)"></button></td>
+                <td><button id="btn2" onclick="sendData(1)"></button></td>
+            </tr>
+            <tr>
+                <td><button id="btn3" onclick="sendData(2)"></button></td>
+                <td><button id="btn4" onclick="sendData(3)"></button></td>
+            </tr>
+        </table>
         <button id="cancel-btn">Cancel</button>
         <button id="next-btn">Next</button>
     </div>
@@ -58,6 +58,16 @@
             <p class="object">Paper</p>
             <p class="object">Paper</p>
             <p class="object">Paper</p>
+        </div>
+    </div>
+    <!-- query window -->
+    <div id="window-container">
+        <div id="window">
+            <h2 id="query">Question</h2>
+            <div id="response-container">
+                <button id="response1" onclick="closeQuery(1)">Hinge</button>
+                <button id="response2" onclick="closeQuery(2)">Slide</button>
+            </div>
         </div>
     </div>
     <script src="{{url_for('static', filename='script.js')}}"></script>

@@ -2,6 +2,10 @@ from flask import (Flask, request, jsonify, render_template, url_for)
 
 app = Flask(__name__)
 
+# dictionary saving previous query selections for object specifications
+# format - objectID: response
+queryDict = {}
+
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -10,7 +14,28 @@ def home():
 @app.route('/ajax', methods=['POST'])
 def ajax_request():
     data = request.get_json(force=True)
+    print("REQUEST:")
     print(data)
+
+    # grab object id from html
+    objID = data['object']
+
+    # check if object has already been identified previously
+    if objID in queryDict:
+      if queryDict[objID] == '':
+        queryDict[objID] = data['response']
+      queryResponse = queryDict[objID]
+      # send to backend
+      print("RESPONSE:")
+      print(queryResponse)
+    else:
+      # ask query in HTML
+      queryResponse = data['response'] # retrieve response from HTML
+      queryDict[objID] = queryResponse
+
+    print("MEMORY: ")
+    print(queryDict)
+
     return jsonify(username=data['object'] + '-' + data['action'])
     # username = request.form['username']
     # return jsonify(username=username)
