@@ -32,7 +32,7 @@ const maxSetNum = actions.length/buttons.length -1;
 const convertToValues = [
   function() {
     if (buttonValues == moreActions[subNum]) {
-      console.log(buttons[0].value);
+      //console.log(buttons[0].value);
     }
     if (buttonValues[0+setNum*buttons.length] == actions[0+setNum*buttons.length]) {
       subNum = 0+setNum*buttons.length;
@@ -41,7 +41,7 @@ const convertToValues = [
   },
   function() {
     if (buttonValues == moreActions[subNum]) {
-      console.log(buttons[1].value);
+      //console.log(buttons[1].value);
     }
     if (buttonValues[1+setNum*buttons.length] == actions[1+setNum*buttons.length]) {
       subNum = 1+setNum*buttons.length;
@@ -50,7 +50,7 @@ const convertToValues = [
   },
   function() {
     if (buttonValues == moreActions[subNum]) {
-      console.log(buttons[2].value);
+      //console.log(buttons[2].value);
     }
     if (buttonValues[2+setNum*buttons.length] == actions[2+setNum*buttons.length]) {
       subNum = 2+setNum*buttons.length;
@@ -59,7 +59,7 @@ const convertToValues = [
   },
   function() {
     if (buttonValues == moreActions[subNum]) {
-      console.log(buttons[3].value);
+      //console.log(buttons[3].value);
     }
     if (buttonValues[3+setNum*buttons.length] == actions[3+setNum*buttons.length]) {
       subNum = 3+setNum*buttons.length;

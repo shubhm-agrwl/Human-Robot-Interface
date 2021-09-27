@@ -36,7 +36,7 @@ def ajax_request():
     print("MEMORY: ")
     print(queryDict)
 
-    return jsonify(username=data['object'] + '-' + data['action'])
+    return jsonify(queryDict)
     # username = request.form['username']
     # return jsonify(username=username)
 
@@ -48,4 +48,4 @@ def after_request(response):
   return response
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
