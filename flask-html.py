@@ -22,23 +22,46 @@ def ajax_request():
 
     # check if object has already been identified previously
     if objID in queryDict:
-      if queryDict[objID] == '':
-        queryDict[objID] = data['response']
+      # if queryDict[objID] == '':
+      #   queryDict[objID] = data['response']
       queryResponse = queryDict[objID]
-      # send to backend
+
       print("RESPONSE:")
       print(queryResponse)
+      
+      print("MEMORY: ")
+      print(queryDict)
+      print("=*=*=*=*=*=*=*=*=")
+
+      # send to html
+      return jsonify(queryResponse)
     else:
       # ask query in HTML
-      queryResponse = data['response'] # retrieve response from HTML
-      queryDict[objID] = queryResponse
+      # queryResponse = data['response'] # retrieve response from HTML
+      # queryDict[objID] = queryResponse
+      print("MEMORY: ")
+      print(queryDict)
+      print("=*=*=*=*=*=*=*=*=")
+
+      return ""
+
+    # return jsonify(queryDict)
+    # username = request.form['username']
+    # return jsonify(username=username)
+
+@app.route('/ajax2', methods=['POST'])
+def ajax2_request():
+    data = request.get_json(force=True)
+
+    obj = data['object']
+    response = data['response']
+    queryDict[obj] = response
 
     print("MEMORY: ")
     print(queryDict)
+    print("=*=*=*=*=*=*=*=*=")
 
-    return jsonify(queryDict)
-    # username = request.form['username']
-    # return jsonify(username=username)
+    return ""
 
 @app.after_request
 def after_request(response):

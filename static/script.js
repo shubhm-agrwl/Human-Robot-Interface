@@ -134,10 +134,9 @@ function sendData(btnIndex) {
 
   // send obj & act if button is an 'object'
   if(!isAction) {
-    win.style.display = "flex";
+    // win.style.display = "flex";
     currentObject = value;
-    // send empty string for query response
-    return loadXMLDoc(currentObject, currentAction, "");
+    return loadXMLDoc(currentObject, currentAction);
   }
 }
 
@@ -178,5 +177,5 @@ function closeQuery(responseID) {
   else {
     response = document.getElementById("response2").innerHTML;
   }
-  return loadXMLDoc(currentObject, currentAction, response);
+  return loadXMLDoc2(currentObject, response);
 }
