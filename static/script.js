@@ -1,3 +1,68 @@
+function loadXMLDoc(obj, act) {
+  var req = new XMLHttpRequest()
+
+  req.open('POST', 'http://localhost:5000/ajax')
+  req.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+  var postVars = '{"object":"'+obj+'", "action":"'+act+'"}'
+  req.send(postVars)
+
+  req.onreadystatechange = function() {
+      if (req.readyState == 1) {
+          if (req.status != 200) {
+              // error handling code here
+          } else {
+              // var response = JSON.parse(req.responseText)
+              // document.getElementById('myDiv').innerHTML = response.username
+          }
+      } else {
+
+          // check for empty response
+          if (req.responseText!="") {
+              var response = JSON.parse(req.responseText)
+              console.log("SAVED RESPONSE: " + response)
+              // if (response["1-1"]=="") {
+              //     console.log("empty");
+              // } else {
+              //     console.log(response["1-1"]);
+              //     // win.style.display = "none";
+              // }
+              win.style.display = "none"
+          } else {
+              const win = document.getElementById("window")
+              win.style.display = "flex"
+          }
+
+          //var response = JSON.parse(req.responseText)
+          //document.getElementById('myDiv').innerHTML = response.username
+      }
+  }
+  return false
+}
+
+function loadXMLDoc2(obj, response) {
+  var req = new XMLHttpRequest()
+
+  req.open('POST', 'http://localhost:5000/ajax2')
+  req.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+  var postVars = '{"object":"'+obj+'", "response":"'+response+'"}'
+  req.send(postVars)
+
+  req.onreadystatechange = function() {
+
+      if (req.readyState == 1) {
+          if (req.status != 200) {
+              // error handling code here
+          } else {
+              // var response = JSON.parse(req.responseText)
+              // document.getElementById('myDiv').innerHTML = response.username
+          }
+      } else {
+          console.log("SAVING: " + response)
+      }
+  }
+  return false
+}
+
 // The list of actions displayed on the buttons in the main menu
 const actions = ["Pick up", "Open/Close", "Switch on/off", "Feed", "Plug in/out", "6", "7", "8"];
 
