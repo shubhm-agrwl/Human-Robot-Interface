@@ -1,70 +1,135 @@
+let knowledgeBase;
+
+// execute after selecting object button
+// determine whether to show query pop-up
 function loadXMLDoc(obj, act) {
   var req = new XMLHttpRequest()
 
+  // link to ajax
   req.open('POST', 'http://localhost:5000/ajax')
   req.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+  // send object and task to backend
   var postVars = '{"object":"'+obj+'", "action":"'+act+'"}'
   req.send(postVars)
 
   req.onreadystatechange = function() {
-      if (req.readyState == 1) {
-          if (req.status != 200) {
-              // error handling code here
-          } else {
-              // var response = JSON.parse(req.responseText)
-              // document.getElementById('myDiv').innerHTML = response.username
-          }
-      } else {
-
-          // check for empty response
-          if (req.responseText!="") {
-              var response = JSON.parse(req.responseText)
-              console.log("SAVED RESPONSE: " + response)
-              // if (response["1-1"]=="") {
-              //     console.log("empty");
-              // } else {
-              //     console.log(response["1-1"]);
-              //     // win.style.display = "none";
-              // }
-              win.style.display = "none"
-          } else {
-              const win = document.getElementById("window")
-              win.style.display = "flex"
-          }
-
-          //var response = JSON.parse(req.responseText)
-          //document.getElementById('myDiv').innerHTML = response.username
+    if (req.readyState == 1) {
+      if (req.status != 200) {
+        // error handling code here
       }
+    } else if (req.readyState == 4) {
+      // check for empty response
+      if (req.responseText!="") {
+        var response = JSON.parse(req.responseText)
+        console.log("SAVED RESPONSE: " + response)
+        win.style.display = "none"
+      } else {
+        // set pop-up response options
+        document.getElementById("response1").innerHTML = knowledgeBase[obj]["op1"]
+        document.getElementById("response2").innerHTML = knowledgeBase[obj]["op2"]
+
+        // show pop-up window
+        const win = document.getElementById("window")
+        win.style.display = "flex"
+      }
+    }
   }
   return false
 }
 
+// execute after selecting query option from pop-up
+// save response in knowledge base
 function loadXMLDoc2(obj, response) {
   var req = new XMLHttpRequest()
-
+  
+  // link to ajax2
   req.open('POST', 'http://localhost:5000/ajax2')
   req.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+  // send object and response to backend
   var postVars = '{"object":"'+obj+'", "response":"'+response+'"}'
   req.send(postVars)
 
   req.onreadystatechange = function() {
-
-      if (req.readyState == 1) {
-          if (req.status != 200) {
-              // error handling code here
-          } else {
-              // var response = JSON.parse(req.responseText)
-              // document.getElementById('myDiv').innerHTML = response.username
-          }
-      } else {
-          console.log("SAVING: " + response)
+    if (req.readyState == 1) {
+      if (req.status != 200) {
+        // error handling code here
       }
+    } else if (req.readyState == 2) {
+      console.log("SAVING: " + response)
+    }
   }
   return false
 }
 
+// populate buttons
+function loadXMLDoc3() {
+  var req = new XMLHttpRequest()
+  
+  // link to ajax3
+  req.open('POST', 'http://localhost:5000/ajax3')
+  req.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+  
+  req.send()
+
+  req.onreadystatechange = function() {
+    if (req.readyState == 1) {
+      if (req.status != 200) {
+        // error handling code here
+      }
+    } else if (req.readyState == 4) {
+      // receive knowledge base
+      knowledgeBase = JSON.parse(req.responseText)
+
+      // initialize empty button values
+      for(let i=0; i<8; i++) {
+        actions[i] = "-";
+      }
+
+      // array of specifications for each object in knowledgeBase
+      let specifications = Object.values(knowledgeBase);
+      let cIndex = 0;
+
+      let categories = [];
+
+      for(let i=0; i<specifications.length; i++) {
+        let cat = specifications[i]["cat"];
+        categories.push(cat);
+        // add category to actions list if not already present
+        if(actions.includes(cat) == false) {
+          actions[cIndex] = cat;
+          cIndex++;
+        }
+      }
+
+      let objects = Object.keys(knowledgeBase);
+      possibleObjects = objects;
+      fillObjectsDetected();
+
+      // loop through category buttons
+      for(let i=0; i<actions.length; i++) {
+        let cat = actions[i];
+        // loop through list of all categories
+        // find all objects in category
+        let objNum = 0;
+        for(let c=0; c<categories.length; c++) {
+          if(categories[c] === cat) {
+            // add object to moreActions list
+            moreActions[i][objNum] = objects[c];
+            objNum++;
+          }
+        }
+      }
+
+      setActions();
+    }
+  }
+  return false
+}
+
+loadXMLDoc3();
+
 // The list of actions displayed on the buttons in the main menu
-const actions = ["Pick up", "Open/Close", "Switch on/off", "Feed", "Plug in/out", "6", "7", "8"];
+let actions = ["-", "-", "-", "-", "-", "-", "-", "-"];
 
 // The values of the buttons. This list changes depending on which menu the user is on
 var buttonValues = [];
@@ -173,8 +238,6 @@ for (var i=0; i<buttons.length; i++) {
   buttons[i].addEventListener("click", convertToValues[i]);
 }
 
-setActions();
-
 let win = document.getElementById("window"); // pop-up window
 let currentAction; // saved 'task' value
 let currentObject; // saved 'object' value
@@ -206,7 +269,7 @@ function sendData(btnIndex) {
 }
 
 // compilation of possible objects
-const possibleObjects = ["Fruit", "Computer", "Cup", "Paper", "Pen", "Bottle", "Door", "Lamp", "Box", "Phone", "Charger", "Light switch", "Jar", "Bowl", "Plate"];
+let possibleObjects = [];
 
 // list of paragraph elements in objects-detected list (6)
 const objectsDetected = document.getElementsByClassName("object");
@@ -218,18 +281,20 @@ let currentObjectsList = [];
 let randomIndex;
 
 // fill objects-detected list with random objects
-for(let i=0; i<objectsDetected.length; i++) {
+function fillObjectsDetected() {
+  for(let i=0; i<objectsDetected.length; i++) {
 
-  // check if random object is already listed in objects-detected list
-  do {
-    randomIndex = Math.floor(Math.random() * possibleObjects.length);
-  } while(currentObjectsList.includes(randomIndex));
+    // check if random object is already listed in objects-detected list
+    do {
+      randomIndex = Math.floor(Math.random() * possibleObjects.length);
+    } while(currentObjectsList.includes(randomIndex));
 
-  // add object to current showing of objects-detected list
-  currentObjectsList.push(randomIndex);
-  
-  // change objects-detected list to display object
-  objectsDetected[i].innerHTML = possibleObjects[randomIndex];
+    // add object to current showing of objects-detected list
+    currentObjectsList.push(randomIndex);
+    
+    // change objects-detected list to display object
+    objectsDetected[i].innerHTML = possibleObjects[randomIndex];
+  }
 }
 
 // close query window

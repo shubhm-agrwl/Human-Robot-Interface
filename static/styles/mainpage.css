@@ -26,6 +26,7 @@ button {
 button:hover {
   background-color: rgb(200, 200, 200);
   border: .075em solid rgb(150, 150, 150);
+  cursor: pointer;
 }
 button:active {
   background-color: rgb(156, 205, 238);

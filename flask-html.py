@@ -1,6 +1,69 @@
 from flask import (Flask, request, jsonify, render_template, url_for)
-
+import json
 app = Flask(__name__)
+
+knowledgeBase = {
+  "Fruit": {
+    "op1": "Option 1",
+    "op2": "Option 2",
+    "cat": "Pick up",
+  },
+  "Cup": {
+    "op1": "Option 1",
+    "op2": "Option 2",
+    "cat": "Pick up",
+  },
+  "Door 1": {
+    "op1": "Hinge",
+    "op2": "Slide",
+    "cat": "Open/close",
+  },
+  "Door 2": {
+    "op1": "Hinge",
+    "op2": "Slide",
+    "cat": "Open/close",
+  },
+  "Pen": {
+    "op1": "Option 1",
+    "op2": "Option 2",
+    "cat": "Pick up",
+  },
+  "Bowl": {
+    "op1": "Option 1",
+    "op2": "Option 2",
+    "cat": "Pick up",
+  },
+  "Book": {
+    "op1": "Option 1",
+    "op2": "Option 2",
+    "cat": "Pick up",
+  },
+  "Lamp": {
+    "op1": "Flick",
+    "op2": "Button",
+    "cat": "On/off",
+  },
+  "Remote": {
+    "op1": "Switch",
+    "op2": "Button",
+    "cat": "On/off",
+  },
+  "Utensil": {
+    "op1": "Fork",
+    "op2": "Spoon",
+    "cat": "Feed",
+  },
+  "Phone": {
+    "op1": "Option 1",
+    "op2": "Option 2",
+    "cat": "Plug in",
+  },
+  "Computer": {
+    "op1": "Option 1",
+    "op2": "Option 2",
+    "cat": "Plug in",
+  },
+}
 
 # dictionary saving previous query selections for object specifications
 # format - objectID: response
@@ -11,19 +74,19 @@ def home():
     return render_template('index.html')
     #return url_for('/Users/admin/github_shubham/Human-Robot-Interface', filename = 'index.html')
 
+# execute after selecting object button
 @app.route('/ajax', methods=['POST'])
 def ajax_request():
+    # get object and action from button clicked
     data = request.get_json(force=True)
     print("REQUEST:")
     print(data)
 
-    # grab object id from html
+    # grab object id
     objID = data['object']
 
     # check if object has already been identified previously
     if objID in queryDict:
-      # if queryDict[objID] == '':
-      #   queryDict[objID] = data['response']
       queryResponse = queryDict[objID]
 
       print("RESPONSE:")
@@ -37,22 +100,19 @@ def ajax_request():
       return jsonify(queryResponse)
     else:
       # ask query in HTML
-      # queryResponse = data['response'] # retrieve response from HTML
-      # queryDict[objID] = queryResponse
       print("MEMORY: ")
       print(queryDict)
       print("=*=*=*=*=*=*=*=*=")
 
       return ""
 
-    # return jsonify(queryDict)
-    # username = request.form['username']
-    # return jsonify(username=username)
-
+# execute after selecting query option from pop-up
 @app.route('/ajax2', methods=['POST'])
 def ajax2_request():
+    # get object and response from button clicked
     data = request.get_json(force=True)
 
+    # save response
     obj = data['object']
     response = data['response']
     queryDict[obj] = response
@@ -62,6 +122,12 @@ def ajax2_request():
     print("=*=*=*=*=*=*=*=*=")
 
     return ""
+
+# execute when page loads
+# send knowledge base to populate buttons
+@app.route('/ajax3', methods=['POST'])
+def ajax3_request():
+    return jsonify(knowledgeBase) 
 
 @app.after_request
 def after_request(response):
