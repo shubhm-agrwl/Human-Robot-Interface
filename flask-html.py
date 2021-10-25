@@ -4,38 +4,48 @@ app = Flask(__name__)
 
 knowledgeBase = {
   "Fruit": {
-    "op1": "Option 1",
-    "op2": "Option 2",
+    "op1": "",
+    "op2": "",
     "cat": "Pick up",
   },
   "Cup": {
-    "op1": "Option 1",
-    "op2": "Option 2",
+    "op1": "",
+    "op2": "",
     "cat": "Pick up",
   },
-  "Door 1": {
+  "Door": {
     "op1": "Hinge",
     "op2": "Slide",
     "cat": "Open/close",
   },
-  "Door 2": {
+  "Cabinet": {
     "op1": "Hinge",
     "op2": "Slide",
+    "cat": "Open/close",
+  },
+  "Drawer": {
+    "op1": "Hinge",
+    "op2": "Slide",
+    "cat": "Open/close",
+  },
+  "Box": {
+    "op1": "",
+    "op2": "",
     "cat": "Open/close",
   },
   "Pen": {
-    "op1": "Option 1",
-    "op2": "Option 2",
+    "op1": "",
+    "op2": "",
     "cat": "Pick up",
   },
   "Bowl": {
-    "op1": "Option 1",
-    "op2": "Option 2",
+    "op1": "",
+    "op2": "",
     "cat": "Pick up",
   },
   "Book": {
-    "op1": "Option 1",
-    "op2": "Option 2",
+    "op1": "",
+    "op2": "",
     "cat": "Pick up",
   },
   "Lamp": {
@@ -54,14 +64,29 @@ knowledgeBase = {
     "cat": "Feed",
   },
   "Phone": {
-    "op1": "Option 1",
-    "op2": "Option 2",
+    "op1": "",
+    "op2": "",
     "cat": "Plug in",
   },
   "Computer": {
-    "op1": "Option 1",
-    "op2": "Option 2",
+    "op1": "",
+    "op2": "",
     "cat": "Plug in",
+  },
+  "Potted plant": {
+    "op1": "",
+    "op2": "",
+    "cat": "Pick up",
+  },
+  "Tissue": {
+    "op1": "",
+    "op2": "",
+    "cat": "Pick up",
+  },
+  "Bottle": {
+    "op1": "",
+    "op2": "",
+    "cat": "Open/close",
   },
 }
 
