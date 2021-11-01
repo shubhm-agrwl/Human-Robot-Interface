@@ -1,4 +1,5 @@
 from flask import (Flask, request, jsonify, render_template, url_for)
+import requests
 
 app = Flask(__name__)
 
@@ -7,11 +8,13 @@ def home():
     return render_template('index.html')
     #return url_for('/Users/admin/github_shubham/Human-Robot-Interface', filename = 'index.html')
 
-@app.route('/ajax', methods=['POST'])
+@app.route('/webinterface', methods=['POST'])
 def ajax_request():
     data = request.get_json(force=True)
     print(data)
-    return jsonify(username=data['object'] + '-' + data['action'])
+    response = requests.post('http://localhost:5010/ajax', json={"task":"1", "action":"Pick Up"})
+    print(response.status_code)
+    return jsonify(username=data['task'] + '-' + data['action'])
     # username = request.form['username']
     # return jsonify(username=username)
 
@@ -23,4 +26,4 @@ def after_request(response):
   return response
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
