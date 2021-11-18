@@ -6,7 +6,7 @@ function loadXMLDoc(obj, act) {
   var req = new XMLHttpRequest()
 
   // link to ajax
-  req.open('POST', 'http://localhost:5000/ajax')
+  req.open('POST', '/ajax')
   req.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
   // send object and task to backend
   var postVars = '{"object":"'+obj+'", "action":"'+act+'"}'
@@ -49,7 +49,7 @@ function loadXMLDoc2(obj, response) {
   var req = new XMLHttpRequest()
   
   // link to ajax2
-  req.open('POST', 'http://localhost:5000/ajax2')
+  req.open('POST', '/ajax2')
   req.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
   // send object and response to backend
   var postVars = '{"object":"'+obj+'", "response":"'+response+'"}'
@@ -72,7 +72,7 @@ function loadXMLDoc3() {
   var req = new XMLHttpRequest()
   
   // link to ajax3
-  req.open('POST', 'http://localhost:5000/ajax3')
+  req.open('POST', '/ajax3')
   req.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
   
   req.send()

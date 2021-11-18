@@ -104,8 +104,7 @@ def home():
 def ajax_request():
     # get object and action from button clicked
     data = request.get_json(force=True)
-    print("REQUEST:")
-    print(data)
+    print("REQUEST:" + str(data))
 
     # grab object id
     objID = data['object']
@@ -114,20 +113,14 @@ def ajax_request():
     if objID in queryDict:
       queryResponse = queryDict[objID]
 
-      print("RESPONSE:")
-      print(queryResponse)
-      
-      print("MEMORY: ")
-      print(queryDict)
-      print("=*=*=*=*=*=*=*=*=")
+      print("RESPONSE:" + str(queryResponse))      
+      print("MEMORY: " + str(queryDict))
 
       # send to html
       return jsonify(queryResponse)
     else:
       # ask query in HTML
-      print("MEMORY: ")
-      print(queryDict)
-      print("=*=*=*=*=*=*=*=*=")
+      print("MEMORY: " + str(queryDict))
 
       return ""
 
@@ -142,10 +135,7 @@ def ajax2_request():
     response = data['response']
     queryDict[obj] = response
 
-    print("MEMORY: ")
-    print(queryDict)
-    print("=*=*=*=*=*=*=*=*=")
-
+    print("MEMORY: " + str(queryDict))
     return ""
 
 # execute when page loads
