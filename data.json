@@ -1,0 +1,87 @@
+{
+  "Fruit": {
+    "op1": "",
+    "op2": "",
+    "cat": "Pick up"
+  },
+  "Cup": {
+    "op1": "",
+    "op2": "",
+    "cat": "Pick up"
+  },
+  "Door": {
+    "op1": "Hinge",
+    "op2": "Slide",
+    "cat": "Open/close"
+  },
+  "Cabinet": {
+    "op1": "Hinge",
+    "op2": "Slide",
+    "cat": "Open/close"
+  },
+  "Drawer": {
+    "op1": "Hinge",
+    "op2": "Slide",
+    "cat": "Open/close"
+  },
+  "Box": {
+    "op1": "",
+    "op2": "",
+    "cat": "Open/close"
+  },
+  "Pen": {
+    "op1": "",
+    "op2": "",
+    "cat": "Pick up"
+  },
+  "Bowl": {
+    "op1": "",
+    "op2": "",
+    "cat": "Pick up"
+  },
+  "Book": {
+    "op1": "",
+    "op2": "",
+    "cat": "Pick up"
+  },
+  "Lamp": {
+    "op1": "Flick",
+    "op2": "Button",
+    "cat": "On/off"
+  },
+  "Remote": {
+    "op1": "Switch",
+    "op2": "Button",
+    "cat": "On/off"
+  },
+  "Utensil": {
+    "op1": "Fork",
+    "op2": "Spoon",
+    "cat": "Feed"
+  },
+  "Phone": {
+    "op1": "",
+    "op2": "",
+    "cat": "Plug in"
+  },
+  "Computer": {
+    "op1": "",
+    "op2": "",
+    "cat": "Plug in"
+  },
+  "Potted plant": {
+    "op1": "",
+    "op2": "",
+    "cat": "Pick up"
+  },
+  "Tissue": {
+    "op1": "",
+    "op2": "",
+    "cat": "Pick up"
+  },
+  "Bottle": {
+    "op1": "",
+    "op2": "",
+    "cat": "Open/close"
+  }
+}

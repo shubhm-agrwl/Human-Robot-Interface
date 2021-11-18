@@ -1,94 +1,14 @@
 from flask import (Flask, request, jsonify, render_template, url_for)
 import json
-app = Flask(__name__)
+import requests
 
-knowledgeBase = {
-  "Fruit": {
-    "op1": "",
-    "op2": "",
-    "cat": "Pick up",
-  },
-  "Cup": {
-    "op1": "",
-    "op2": "",
-    "cat": "Pick up",
-  },
-  "Door": {
-    "op1": "Hinge",
-    "op2": "Slide",
-    "cat": "Open/close",
-  },
-  "Cabinet": {
-    "op1": "Hinge",
-    "op2": "Slide",
-    "cat": "Open/close",
-  },
-  "Drawer": {
-    "op1": "Hinge",
-    "op2": "Slide",
-    "cat": "Open/close",
-  },
-  "Box": {
-    "op1": "",
-    "op2": "",
-    "cat": "Open/close",
-  },
-  "Pen": {
-    "op1": "",
-    "op2": "",
-    "cat": "Pick up",
-  },
-  "Bowl": {
-    "op1": "",
-    "op2": "",
-    "cat": "Pick up",
-  },
-  "Book": {
-    "op1": "",
-    "op2": "",
-    "cat": "Pick up",
-  },
-  "Lamp": {
-    "op1": "Flick",
-    "op2": "Button",
-    "cat": "On/off",
-  },
-  "Remote": {
-    "op1": "Switch",
-    "op2": "Button",
-    "cat": "On/off",
-  },
-  "Utensil": {
-    "op1": "Fork",
-    "op2": "Spoon",
-    "cat": "Feed",
-  },
-  "Phone": {
-    "op1": "",
-    "op2": "",
-    "cat": "Plug in",
-  },
-  "Computer": {
-    "op1": "",
-    "op2": "",
-    "cat": "Plug in",
-  },
-  "Potted plant": {
-    "op1": "",
-    "op2": "",
-    "cat": "Pick up",
-  },
-  "Tissue": {
-    "op1": "",
-    "op2": "",
-    "cat": "Pick up",
-  },
-  "Bottle": {
-    "op1": "",
-    "op2": "",
-    "cat": "Open/close",
-  },
-}
+app = Flask(__name__)
+ 
+# Opening JSON file
+f = open('data.json',)
+# returns JSON object as a dictionary
+knowledgeBase = json.load(f)
+f.close()
 
 # dictionary saving previous query selections for object specifications
 # format - objectID: response
@@ -115,12 +35,22 @@ def ajax_request():
 
       print("RESPONSE:" + str(queryResponse))      
       print("MEMORY: " + str(queryDict))
-
+      print("Sending action to Robot")
       # send to html
-      return jsonify(queryResponse)
+      #return jsonify(queryResponse)
+
+      #response = requests.post('http://localhost:5010/ajax', json={"task":"1", "action":"Pick Up"})
+      #print(response.status_code)
+      return jsonify(username=data['object'] + '-' + data['action'])
+    
     else:
       # ask query in HTML
       print("MEMORY: " + str(queryDict))
+
+      if (knowledgeBase[data['object']]['op1']==""):
+        print("Sending action to Robot")
+        #response = requests.post('http://localhost:5010/ajax', json={"task":"1", "action":"Pick Up"})
+        #print(response.status_code)
 
       return ""
 
@@ -136,6 +66,10 @@ def ajax2_request():
     queryDict[obj] = response
 
     print("MEMORY: " + str(queryDict))
+    print("Sending action to Robot")
+    #response = requests.post('http://localhost:5010/ajax', json={"task":"1", "action":"Pick Up"})
+    #print(response.status_code)
+    # return jsonify(username=data['task'] + '-' + data['action'])
     return ""
 
 # execute when page loads
