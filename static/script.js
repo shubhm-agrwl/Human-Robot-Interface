@@ -209,6 +209,9 @@ function setButtonValues() {
   for (var i=0; i<buttons.length; i++) {
     buttons[i].innerHTML = buttonValues[i+setNum*buttons.length];
     buttons[i].value = buttonValues[i+setNum*buttons.length];
+    //re-enables the buttons (after timeout)
+    buttons[i].disabled = false;
+		buttons[i].style=null;
   }
 }
 
@@ -217,6 +220,8 @@ function setActions() {
   buttonValues = actions;
   setNum = 0;
   setButtonValues();
+
+
 }
 
 // A function that sends the user to the corresponding sub menu
@@ -268,6 +273,14 @@ function sendData(btnIndex) {
 
   // send obj & act if button is an 'object'
   if(!isAction) {
+    
+    //disables buttons (timeout)
+    for (var i=0;i<buttons.length;i++){
+      buttons[i].disabled = true;
+    }
+    buttons[btnIndex].style.backgroundColor = "#88c8e8";
+    setTimeout(setActions, 10000);  
+
     // win.style.display = "flex";
     currentObject = value;
     return loadXMLDoc(currentObject, currentAction);
