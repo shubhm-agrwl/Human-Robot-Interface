@@ -30,6 +30,9 @@ function loadXMLDoc(obj, act) {
         // confirm that button was selected
         console.log(obj + " was selected.")
       } else {
+        // set pop-up title
+        document.getElementById("query").innerHTML = obj;
+
         // set pop-up response options
         document.getElementById("response1").innerHTML = knowledgeBase[obj]["op1"]
         document.getElementById("response2").innerHTML = knowledgeBase[obj]["op2"]
