@@ -163,3 +163,20 @@ for(let i=0; i<objectsDetected.length; i++) {
   // change objects-detected list to display object
   objectsDetected[i].innerHTML = possibleObjects[randomIndex];
 }
+
+function startCam() {
+  var video = document.querySelector("#videoElement");
+
+  if (navigator.mediaDevices.getUserMedia) {
+    navigator.mediaDevices
+      .getUserMedia({ video: true })
+      .then((stream) => {
+        video.srcObject = stream;
+      })
+      .catch(function (error) {
+        console.log("Something went wrong!");
+      });
+  }
+}
+
+startCam();
