@@ -36,13 +36,13 @@ def ajax_request():
       print("RESPONSE:" + str(queryResponse))      
       print("MEMORY: " + str(queryDict))
       print("Sending action to Robot")
-      print("{\"task\":"+data['object']+", \"action\":\"Pick Up\"}")
+      print("{\"task\":"+data['object']+", \"action\":" + knowledgeBase[data['object']]['id'] + "}")
       # send to html
       #return jsonify(queryResponse)
 
-      #response = requests.post('http://localhost:5010/ajax', json={"task":data['object'], "action":"Pick Up"})
+      #response = requests.post('http://localhost:5010/ajax', json={"task":data['object'], "action":knowledgeBase[data['object']]['id']})
       #print(response.status_code)
-      return jsonify(username=data['object'] + '-' + data['action'])
+      return jsonify(username=data['object'] + '-' + knowledgeBase[data['object']]['id'])
     
     else:
       # ask query in HTML
@@ -50,8 +50,8 @@ def ajax_request():
 
       if (knowledgeBase[data['object']]['op1']==""):
         print("Sending action to Robot")
-        print("{\"task\":"+data['object']+", \"action\":\"Pick Up\"}")
-        #response = requests.post('http://localhost:5010/ajax', json={"task":data['object'], "action":"Pick Up"})
+        print("{\"task\":"+data['object']+", \"action\":" + knowledgeBase[data['object']]['id'] + "}")
+        #response = requests.post('http://localhost:5010/ajax', json={"task":data['object'], "action":knowledgeBase[data['object']]['id']})
         #print(response.status_code)
 
       return ""
@@ -69,8 +69,8 @@ def ajax2_request():
 
     print("MEMORY: " + str(queryDict))
     print("Sending action to Robot")
-    print("{\"task\":"+data['object']+", \"action\":\"Pick Up\"}")
-    #response = requests.post('http://localhost:5010/ajax', json={"task":data['object'], "action":"Pick Up"})
+    print("{\"task\":"+data['object']+", \"action\":" + knowledgeBase[data['object']]['id'] + "}")
+    #response = requests.post('http://localhost:5010/ajax', json={"task":data['object'], "action":knowledgeBase[data['object']]['id']})
     #print(response.status_code)
     # return jsonify(username=data['task'] + '-' + data['action'])
     return ""

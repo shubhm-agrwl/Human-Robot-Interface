@@ -2,86 +2,103 @@
   "Fruit": {
     "op1": "",
     "op2": "",
-    "cat": "Pick up"
+    "cat": "Pick up",
+    "id": "1"
   },
   "Cup": {
     "op1": "",
     "op2": "",
-    "cat": "Pick up"
+    "cat": "Pick up",
+    "id": "2"
   },
   "Door": {
     "op1": "Hinge",
     "op2": "Slide",
-    "cat": "Open/close"
+    "cat": "Open/close",
+    "id": "3"
   },
   "Cabinet": {
     "op1": "Hinge",
     "op2": "Slide",
-    "cat": "Open/close"
+    "cat": "Open/close",
+    "id": "4"
   },
   "Drawer": {
     "op1": "Hinge",
     "op2": "Slide",
-    "cat": "Open/close"
+    "cat": "Open/close",
+    "id": "5"
   },
   "Box": {
     "op1": "",
     "op2": "",
-    "cat": "Open/close"
+    "cat": "Open/close",
+    "id": "6"
   },
   "Pen": {
     "op1": "",
     "op2": "",
-    "cat": "Pick up"
+    "cat": "Pick up",
+    "id": "7"
   },
   "Bowl": {
     "op1": "",
     "op2": "",
-    "cat": "Pick up"
+    "cat": "Pick up",
+    "id": "8"
   },
   "Book": {
     "op1": "",
     "op2": "",
-    "cat": "Pick up"
+    "cat": "Pick up",
+    "id": "9"
   },
   "Lamp": {
     "op1": "Flick",
     "op2": "Button",
-    "cat": "On/off"
+    "cat": "On/off",
+    "id": "10"
   },
   "Remote": {
     "op1": "Switch",
     "op2": "Button",
-    "cat": "On/off"
+    "cat": "On/off",
+    "id": "11"
   },
   "Utensil": {
     "op1": "Fork",
     "op2": "Spoon",
-    "cat": "Feed"
+    "cat": "Feed",
+    "id": "12"
   },
   "Phone": {
     "op1": "",
     "op2": "",
-    "cat": "Plug in"
+    "cat": "Plug in",
+    "id": "13"
   },
   "Computer": {
     "op1": "",
     "op2": "",
-    "cat": "Plug in"
+    "cat": "Plug in",
+    "id": "14"
   },
   "Potted plant": {
     "op1": "",
     "op2": "",
-    "cat": "Pick up"
+    "cat": "Pick up",
+    "id": "15"
   },
   "Tissue": {
     "op1": "",
     "op2": "",
-    "cat": "Pick up"
+    "cat": "Pick up",
+    "id": "16"
   },
   "Bottle": {
     "op1": "",
     "op2": "",
-    "cat": "Open/close"
+    "cat": "Open/close",
+    "id": "17"
   }
 }
