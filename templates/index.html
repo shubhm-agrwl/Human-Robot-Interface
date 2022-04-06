@@ -1,25 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Human Robot Interface</title>
-    
-    <link rel="stylesheet" href= "{{ url_for('static',filename='styles/mainpage.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/mainpage.css') }}">
 </head>
+<style>
+    .box h3 {
+        text-align: center;
+        position: relative;
+        top: 80px;
+    }
+
+    .box {
+        width: 100%;
+        height: 80px;
+        background: #f0f4f7;
+        /* margin: 20px auto; */
+        margin-top: 12%;
+        border-radius: 10px;
+    }
+
+    .effect {
+        position: relative;
+        -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+        -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    }
+
+    .effect:before,
+    .effect:after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+        -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+        top: 10px;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        -moz-border-radius: 100px / 10px;
+        border-radius: 100px / 10px;
+    }
+
+    .effect:after {
+        right: 10px;
+        left: auto;
+        -webkit-transform: skew(8deg) rotate(3deg);
+        -moz-transform: skew(8deg) rotate(3deg);
+        -ms-transform: skew(8deg) rotate(3deg);
+        -o-transform: skew(8deg) rotate(3deg);
+        transform: skew(8deg) rotate(3deg);
+    }
+
+    .container {
+        height: 27.8vw;
+        width: 100%;
+        /* width: 100%;
+        height: 20%; */
+        position: relative;
+    }
+
+    .box2 {
+        width: 100%;
+        height: 40%;
+        position: absolute;
+        top: 25%;
+        left: 0;
+    }
+
+    .stack-top {
+        z-index: 9;
+        margin: 0px;
+    }
+
+    .requestProgress {
+        margin-top: 10px;
+        width: 100%;
+        height: 15px;
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(to right, #007db6, #0091b2, #009c9e, #00a77e, #22b24c)
+    }
+
+    .bar {
+        position: absolute;
+        width: calc(100% * 2/7);
+        height: 100%;
+        display: flex;
+        animation: move 2s linear infinite;
+        background-color: white;
+    }
+
+    @keyframes move {
+        0% {
+            transform: translate(-100%, 0)
+        }
+
+        100% {
+            transform: translate(calc(7/2*100%), 0)
+        }
+    }
+</style>
+
+<!-- <body style="width: 100%;"> -->
 <body>
     <div class="left">
-        <table>
-            <tr>
-                <td><button id="btn1" onclick="sendData(0)"></button></td>
-                <td><button id="btn2" onclick="sendData(1)"></button></td>
-            </tr>
-            <tr>
-                <td><button id="btn3" onclick="sendData(2)"></button></td>
-                <td><button id="btn4" onclick="sendData(3)"></button></td>
-            </tr>
-        </table>
+        <div id="loading" class="container">
+            <div class="box">
+                <div class="box2 stack-top">
+                    <div style="text-align: center; font-weight:bold; font-size: 32px;">Robot in Action.....</div>
+                    <div class="requestProgress">
+                        <div class="bar"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="buttons">
+            <table>
+                <tr>
+                    <td><button id="btn1" onclick="sendData(0)"></button></td>
+                    <td><button id="btn2" onclick="sendData(1)"></button></td>
+                </tr>
+                <tr>
+                    <td><button id="btn3" onclick="sendData(2)"></button></td>
+                    <td><button id="btn4" onclick="sendData(3)"></button></td>
+                </tr>
+            </table>
+        </div>
         <button id="cancel-btn">Cancel</button>
         <button id="next-btn">Next</button>
     </div>
@@ -49,4 +162,5 @@
     </div>
     <script src="{{url_for('static', filename='script.js')}}"></script>
 </body>
+
 </html>

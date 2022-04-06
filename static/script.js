@@ -4,7 +4,7 @@ let knowledgeBase;
 // determine whether to show query pop-up
 function loadXMLDoc(obj, act) {
   var req = new XMLHttpRequest()
-
+  // document.getElementById("buttons").disabled = true;
   // link to ajax
   req.open('POST', '/ajax')
   req.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
@@ -43,6 +43,7 @@ function loadXMLDoc(obj, act) {
       }
     }
   }
+  // document.getElementById("buttons").disabled = false;
   return false
 }
 
@@ -216,6 +217,8 @@ function setButtonValues() {
     buttons[i].disabled = false;
 		buttons[i].style=null;
   }
+  document.querySelector('#loading').style.display = 'none';
+  document.querySelector('#buttons').style.display = 'flex';
 }
 
 // A function that sends the user back to the main menu
@@ -281,6 +284,8 @@ function sendData(btnIndex) {
     for (var i=0;i<buttons.length;i++){
       buttons[i].disabled = true;
     }
+    document.querySelector('#loading').style.display = 'flex';
+    document.querySelector('#buttons').style.display = 'none';
     buttons[btnIndex].style.backgroundColor = "#88c8e8";
     setTimeout(setActions, 10000);  
 
