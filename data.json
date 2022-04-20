@@ -5,26 +5,26 @@
     "cat": "Pick up",
     "id": "1"
   },
-  "Cup": {
+  "Tea Cup": {
     "op1": "",
     "op2": "",
     "cat": "Pick up",
     "id": "2"
   },
   "Door": {
-    "op1": "Hinge",
+    "op1": "Door Hinge",
     "op2": "Slide",
     "cat": "Open/close",
     "id": "3"
   },
   "Cabinet": {
-    "op1": "Hinge",
+    "op1": "Door Hinge",
     "op2": "Slide",
     "cat": "Open/close",
     "id": "4"
   },
   "Drawer": {
-    "op1": "Hinge",
+    "op1": "Door Hinge",
     "op2": "Slide",
     "cat": "Open/close",
     "id": "5"
@@ -41,7 +41,7 @@
     "cat": "Pick up",
     "id": "7"
   },
-  "Bowl": {
+  "Eating Bowl": {
     "op1": "",
     "op2": "",
     "cat": "Pick up",
@@ -56,13 +56,13 @@
   "Lamp": {
     "op1": "Flick",
     "op2": "Button",
-    "cat": "On/off",
+    "cat": "Turn On/Turn off",
     "id": "10"
   },
   "Remote": {
     "op1": "Switch",
     "op2": "Button",
-    "cat": "On/off",
+    "cat": "Turn On/Turn off",
     "id": "11"
   },
   "Utensil": {

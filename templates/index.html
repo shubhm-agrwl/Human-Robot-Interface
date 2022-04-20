@@ -1,52 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Human Robot Interface</title>
-    
-    <link rel="stylesheet" href= "{{ url_for('static',filename='styles/mainpage.css') }}">
-</head>
-<body>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static',filename='styles/mainpage.css') }}"
+    />
+  </head>
+  <body>
+    <div>
+      <button id="start" onclick="ButtonStart()">Start</button>
+      <button id="stop" onclick="ButtonEnd()" hidden>Stop</button>
+      <p id="Voice_Listener" hidden>Listening...</p>
+    </div>
     <div class="left">
-        <table>
-            <tr>
-                <td><button id="btn1" onclick="sendData(0)"></button></td>
-                <td><button id="btn2" onclick="sendData(1)"></button></td>
-            </tr>
-            <tr>
-                <td><button id="btn3" onclick="sendData(2)"></button></td>
-                <td><button id="btn4" onclick="sendData(3)"></button></td>
-            </tr>
-        </table>
-        <button id="cancel-btn">Cancel</button>
-        <button id="next-btn">Next</button>
+      <table>
+        <tr>
+          <td><button id="btn1" onclick="sendData(0)"></button></td>
+          <td><button id="btn2" onclick="sendData(1)"></button></td>
+        </tr>
+        <tr>
+          <td><button id="btn3" onclick="sendData(2)"></button></td>
+          <td><button id="btn4" onclick="sendData(3)"></button></td>
+        </tr>
+      </table>
+      <button id="cancel-btn" value="Cancel">Cancel</button>
+      <button id="next-btn" value="Next">Next</button>
     </div>
     <div class="right">
-        <img src="{{url_for('static', filename='images/picture1.jpeg')}}" alt="sample video feed (static)">
-        <!-- <div style="width:100%; height: 30px; background-color: #cccccc;"> Video Streaming </div>
+      <img
+        src="{{url_for('static', filename='images/picture1.jpeg')}}"
+        alt="sample video feed (static)"
+      />
+      <!-- <div style="width:100%; height: 30px; background-color: #cccccc;"> Video Streaming </div>
         <img src="https://roboticarm.compas.cs.stonybrook.edu:8080/stream?topic=webcam/image_raw" alt="sample video feed (static)"> -->
-        <h2>Objects detected:</h2>
-        <div class="objects-list">
-            <p class="object"></p>
-            <p class="object"></p>
-            <p class="object"></p>
-            <p class="object"></p>
-            <p class="object"></p>
-            <p class="object"></p>
-        </div>
+      <h2>Objects detected:</h2>
+      <div class="objects-list">
+        <p class="object"></p>
+        <p class="object"></p>
+        <p class="object"></p>
+        <p class="object"></p>
+        <p class="object"></p>
+        <p class="object"></p>
+      </div>
     </div>
     <!-- query window -->
     <div id="window-container">
-        <div id="window">
-            <h2 id="query">Query</h2>
-            <div id="response-container">
-                <button id="response1" onclick="closeQuery(1)"></button>
-                <button id="response2" onclick="closeQuery(2)"></button>
-            </div>
+      <div id="window">
+        <h2 id="query">Query</h2>
+        <div id="response-container">
+          <button id="response1" onclick="closeQuery(1)"></button>
+          <button id="response2" onclick="closeQuery(2)"></button>
         </div>
+      </div>
     </div>
     <script src="{{url_for('static', filename='script.js')}}"></script>
-</body>
+  </body>
 </html>

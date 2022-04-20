@@ -5,7 +5,7 @@
 
 body {
   margin: 1em;
-  font-family: 'futura';
+  font-family: "futura";
   box-sizing: border-box;
 }
 h2 {
@@ -17,26 +17,26 @@ p {
   color: rgb(112, 164, 199);
 }
 button {
-  font-family: 'futura';
-  border-radius: .5em;
+  font-family: "futura";
+  border-radius: 0.5em;
   font-size: 2.5em;
-  transition: background-color .1s;
-  border: .075em solid rgb(173, 173, 173);
+  transition: background-color 0.1s;
+  border: 0.075em solid rgb(173, 173, 173);
 }
 button:hover {
   background-color: rgb(200, 200, 200);
-  border: .075em solid rgb(150, 150, 150);
+  border: 0.075em solid rgb(150, 150, 150);
 }
 button:active {
   background-color: rgb(156, 205, 238);
-  border: .075em solid rgb(112, 164, 199);
+  border: 0.075em solid rgb(112, 164, 199);
 }
 
 /* left screen */
 .right {
   float: left;
   width: var(--right-width);
-  margin-left: .5vw;
+  margin-left: 0.5vw;
 }
 .right img {
   width: 100%;
@@ -61,7 +61,6 @@ button:active {
   width: 100%;
 }
 
-
 #cancel-btn {
   width: 17vw;
   height: 17vw;
@@ -69,18 +68,18 @@ button:active {
   margin-left: 5vw;
   margin-right: 5vw;
   background-color: rgb(255, 99, 99);
-  border: .1em solid rgb(185, 50, 50);
-  transition: background-color .1s;
+  border: 0.1em solid rgb(185, 50, 50);
+  transition: background-color 0.1s;
   color: white;
 }
 
 #cancel-btn:hover {
   background-color: rgb(255, 65, 65);
-  border: .1em solid rgb(185, 50, 50);
+  border: 0.1em solid rgb(185, 50, 50);
 }
 #cancel-btn:active {
   background-color: rgb(255, 80, 80);
-  border: .1em solid rgb(206, 53, 53);
+  border: 0.1em solid rgb(206, 53, 53);
 }
 
 #next-btn {
@@ -88,17 +87,17 @@ button:active {
   height: 17vw;
   margin-left: 5vw;
   background-color: rgb(133, 230, 140);
-  border: .1em solid rgb(50, 195, 50);
-  transition: background-color .1s;
+  border: 0.1em solid rgb(50, 195, 50);
+  transition: background-color 0.1s;
   color: white;
 }
 #next-btn:hover {
   background-color: rgb(85, 230, 85);
-  border: .1em solid rgb(50, 190, 50);
+  border: 0.1em solid rgb(50, 190, 50);
 }
 #next-btn:active {
   background-color: rgb(30, 240, 25);
-  border: .1em solid rgb(30, 210, 30);
+  border: 0.1em solid rgb(30, 210, 30);
 }
 #next-btn img {
   width: 30%;
