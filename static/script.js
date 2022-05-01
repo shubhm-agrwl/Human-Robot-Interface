@@ -351,6 +351,47 @@ function closeQuery(responseID) {
 /* VOICE RECOGNITION ENGINE CODE */
 
 /*
+Short Summary :
+
+ Voice recognition for human interface works on enabling the clicking of buttons on screen
+ using a command or name of button.
+ In this code, the buttons are clicked when you say the button name aloud.
+ The Voice Recognition library being used is Speech Recognition Webkit which uses the 
+ browser's voice recognition to identify words. It provides with alternatives for each
+ recognition. Other options such as grammar and continuous recognition are part of its
+ features.
+ 
+ Webkit - https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition
+
+ Improvements :
+ Since the words are short such as 'door','book'.. at times the recognition might not be 
+ accurate enough. So, we have used Levenshtein distance between the recognized word and the buttons
+ on the screen and the button which is closest will be selected.
+
+ Further the accuracy has been improved by changing the words. For example - "On" becomes "Turn on",
+ "Bowl" becomes "Eating bowl", "Hinge" becomes "Door Hinge" and so on. The end API is not affected
+ by this change as it uses Id to perform the action and not the word name.
+
+ The improvements can be extended by using phonetics to identify word similarity. 
+ Ex - https://www.codedrome.com/the-soundex-algorithm-in-javascript/
+ https://stackabuse.com/phonetic-similarity-of-words-a-vectorized-approach-in-python/
+ https://stackabuse.com/levenshtein-distance-and-text-similarity-in-python/
+
+
+ A click event is fired and the button is clicked and works as it is designed to.
+
+ Usage : 
+ The voice recognition is enabled by using the Start button and starts to listen to words. A short
+ pause between the words can be identified as new word. 
+ The dictation is enabled at the top of screen so the user can see the word being recognized and
+ improve on its pronounciation if needed.
+
+ The speech recognizer will stop listening if there is a pause of 5 seconds or greater. 
+ To enable continuous voice recognition we can trigger start when the recognition stops using the
+ recognition events.
+*/
+
+/*
 Grammar can be used for Microsoft Edge. For Google Chrome, grammar/contexts do not work.
 
 var voiceWords = [
@@ -521,9 +562,4 @@ speechRecognition.onresult = (event) => {
       interim_transcript += event.results[i][0].transcript;
     }
   }
-  /*
-  var element = event.results[0][0].transcript;
-  console.log(element + " conf: " + event.results[0][0].confidence);
-  ClickFunction(element);
-  */
 };
